@@ -1,0 +1,40 @@
+:host {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-position: center;
+    background-size: cover;  
+}
+
+.app-image-thumb {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-position: center;
+    background-size: cover;
+    filter: blur(13px);
+}
+
+.app-image-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-position: center;
+    background-size: cover;
+    animation: unblur 1s forwards ease-in-out;
+} 
+
+@keyframes unblur {
+    from {
+        filter: blur(13px);
+    }
+    to {
+        filter: blur(0px);
+    }
+}
