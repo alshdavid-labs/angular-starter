@@ -61,14 +61,7 @@
 }
 
 
-main {
-    margin: 20px;
-    background: #eee;
-    height: calc(100vh - 40px);
-    overflow-y: scroll;
-    position: relative;
-    @include no-scroll();
-}
+
 
 
 // To show and hide elements for desktop / mobile
