@@ -11,11 +11,13 @@ import { HttpService } from './services/http.service'
 import { ImageloaderComponent } from './components/imageloader/imageloader.component';
 
 import { IndexComponent } from './views/index/index.component';
+import { AboutComponent } from  './views/about/about.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     IndexComponent,
+    AboutComponent,
     ImageloaderComponent
   ],
   imports: [

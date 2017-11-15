@@ -1,0 +1,17 @@
+@import '../../../styles.scss';
+
+.hero {
+    position: relative;
+    overflow: hidden;
+    height: calc(100vh - 150px);
+
+    .hero-picture {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        opacity: 0.5;
+    }
+
+}
