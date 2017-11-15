@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store, store } from '../../store'
 
 @Component({
@@ -10,7 +10,7 @@ export class IndexComponent  {
   
   @Store(store) public store
 
-  ngOnInit(){
-    console.log("Create")
-  }
+  ngOnDestroy() { }
+  ngOnInit(){ }
+  
 }

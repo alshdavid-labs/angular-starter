@@ -1,6 +1,8 @@
 import { ReducersMapObject } from 'redux'
-import { testReducer } from './test/test.reducer'
+import { templateReducer } from './template/template.reducer'
+import { configReducer } from './config/config.reducer'
 
 export let reducersMap: ReducersMapObject = {
-    test: testReducer
+    config: configReducer,
+    template: templateReducer
 }

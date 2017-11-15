@@ -1,22 +1,16 @@
-export const Store = () => ({
-    hero: {
-        thumb: "",
-        src: ""
-    },
-    skills: [],
-    my_picture: "",
-    about_me: "",
-    projects: [],
-    details: {
-        cv: "",
-        email: "",
-        phone: {
-            number: "",
-            text: ""
-        },
-        location: {
-            text: "",
-            link: ""
-        }
+export class Template {
+    constructor (text?) {
+        this.text = text || "Starting Text"
     }
-})
+    text:String
+}
+
+export class Config {
+    url = "https://api.your.app/"
+    authorization = ""
+}
+
+export class Store {
+    config:Config = new Config()
+    template:Template = new Template()
+}
