@@ -8,7 +8,7 @@ import { Store, store } from '../../store'
 })
 export class AboutComponent  {
 
-  @Store(store) public store
+  @Store() public store
 
   ngOnDestroy() { }
   ngOnInit(){ }

@@ -1,4 +1,6 @@
-export function Store(value:any) {
+import { store } from "./store.create"
+
+export function Store(value?:any) {
     
     return function(target: any, propertyKey: string | symbol) {
         target["__unsubscribe_from_store"] = null
@@ -21,7 +23,7 @@ export function Store(value:any) {
             
         const ngOnInit = function() {   
             originalNgOnInit.apply(this, arguments)
-            let interalStore = value
+            let interalStore = value || store
             target[propertyKey] = interalStore.getState()
             target["__unsubscribe_from_store"] = interalStore.subscribe(() => {
                 target[propertyKey] = interalStore.getState()
