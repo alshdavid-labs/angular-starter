@@ -1,5 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { store } from './store'
+import { StoreService, store } from './services/store.service'
+declare const window
+
 
 @Component({
     selector: 'app-root',
@@ -8,13 +10,21 @@ import { store } from './store'
     `
 })
 export class AppComponent implements OnInit {
-    @HostListener('window:redux_update', ['$event'])
-    reduxListener(event) { setTimeout(_=>{},0) }
-
-    constructor() {
-        store.getState()
+  
+    constructor(
+        public state: StoreService
+    ) {
+        
     }
-    ngOnInit() { }
+    ngOnInit() { 
+        
+        
+        store().dispatch({ type: "UPDATE_TEMPLATE", payload: { text: "one" } })
+        
+        // dispatch({ type: "UPDATE_TEMPLATE", payload: { text: "two" } })
+        // dispatch({ type: "UPDATE_TEMPLATE", payload: { text: "three" }})
+        // dispatch({ type: "UPDATE_TEMPLATE", payload: { text: "four" } })
+    }
 }
 
 

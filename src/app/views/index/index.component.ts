@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Store, store } from '../../store'
+import { StoreService } from '../../services/store.service'
+import { Store } from '../../store'
 
 @Component({
   selector: 'app-index',
@@ -8,7 +9,11 @@ import { Store, store } from '../../store'
 })
 export class IndexComponent  {
   
-  @Store() public store
+  constructor(
+    public state: StoreService
+  ) {}
+
+  //@Store(this.state) public store
 
   ngOnDestroy() { }
   ngOnInit(){ }

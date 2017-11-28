@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 
 import { HttpService } from './services/http.service'
+import { StoreService } from './services/store.service'
 
 import { ImageloaderComponent } from './components/imageloader/imageloader.component';
 
@@ -25,6 +26,7 @@ import { AboutComponent } from  './views/about/about.component'
     AppRoutes,
   ],
   providers: [
+    StoreService,
     HttpService
   ],
   bootstrap: [

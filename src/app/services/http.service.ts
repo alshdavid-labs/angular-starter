@@ -1,12 +1,18 @@
 import { Injectable } from '@angular/core';
-import { store } from '../store'
+import { StoreService } from './store.service'
 
 @Injectable()
 export class HttpService {
 
+    constructor(
+        public appStore: StoreService
+    ){}
+
+    store = this.appStore.store
+
     get(endpoint, headers?){
         headers = this.setupHeaders(headers)
-        return xhr(store.getState().config.url + endpoint, {
+        return xhr(this.store.getState().config.url + endpoint, {
             method: "GET",
             headers: headers
         })
@@ -15,7 +21,7 @@ export class HttpService {
     post(endpoint, body?, headers?){
         headers = this.setupHeaders(headers)
 
-        return xhr(store.getState().config.url + endpoint, {
+        return xhr(this.store.getState().config.url + endpoint, {
             method: "POST",
             body: body,
             headers: headers
@@ -24,7 +30,7 @@ export class HttpService {
 
     put(endpoint, body?, headers?){
         headers = this.setupHeaders(headers)
-        return xhr(store.getState().config.url + endpoint, {
+        return xhr(this.store.getState().config.url + endpoint, {
             method: "PUT",
             body: body,
             headers:headers
@@ -33,7 +39,7 @@ export class HttpService {
 
     patch(endpoint, body?, headers?){
         headers = this.setupHeaders(headers)
-        return xhr(store.getState().config.url + endpoint, {
+        return xhr(this.store.getState().config.url + endpoint, {
             method: "PATCH",
             body: body,
             headers: headers
@@ -42,7 +48,7 @@ export class HttpService {
 
     delete(endpoint, headers?){
         headers = this.setupHeaders(headers)
-        return xhr(store.getState().config.url + endpoint, {
+        return xhr(this.store.getState().config.url + endpoint, {
             method: "DELETE",
             headers: headers
         })
@@ -50,8 +56,8 @@ export class HttpService {
 
     setupHeaders(headers?){
         let res = {}
-        if (store.getState().config.authorization) {
-            res['authorization'] = store.getState().config.authorization
+        if (this.store.getState().config.authorization) {
+            res['authorization'] = this.store.getState().config.authorization
         }
         for (const header in headers) {
             if (headers[header]) {
