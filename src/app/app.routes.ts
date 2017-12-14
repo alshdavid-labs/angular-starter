@@ -1,12 +1,12 @@
 import { ModuleWithProviders }  from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { IndexComponent } from  './views/index/index.component'
-import { AboutComponent } from  './views/about/about.component'
+import { HomeView } from  './views/home/home.view'
 
 export const routes: Routes = [
-  { path: '', component: IndexComponent },
-  { path: 'about', component: AboutComponent }
+  { path: '',   redirectTo: 'home',     pathMatch: 'full' },
+  { path: 'home',                       component: HomeView },
+  { path: 'about',                      component: HomeView },
 ];
 
 export const AppRoutes: ModuleWithProviders = RouterModule.forRoot(routes);

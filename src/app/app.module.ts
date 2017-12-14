@@ -1,36 +1,34 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutes } from './app.routes';
-import { FormsModule } from '@angular/forms';
 
+// ngrx
+import { State } from './app.state'
+import { StoreModule, MetaReducer } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+export const metaReducers: MetaReducer<any>[] = []
+
+// App
 import { AppComponent } from './app.component';
 
-import { HttpService } from './services/http.service'
-import { StoreService } from './services/store.service'
 
-import { ImageloaderComponent } from './components/imageloader/imageloader.component';
+// Views
+import { HomeView } from './views/home/home.view';
 
-import { IndexComponent } from './views/index/index.component';
-import { AboutComponent } from  './views/about/about.component'
 
 @NgModule({
   declarations: [
     AppComponent,
-    IndexComponent,
-    AboutComponent,
-    ImageloaderComponent
+    HomeView
   ],
   imports: [
     BrowserModule,
-    FormsModule,
     AppRoutes,
+    StoreModule.forRoot(State, { metaReducers }),
+    StoreDevtoolsModule.instrument()    
   ],
-  providers: [
-    StoreService,
-    HttpService
-  ],
-  bootstrap: [
-    AppComponent
-  ]
+  providers: [],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

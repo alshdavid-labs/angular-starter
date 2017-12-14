@@ -2,20 +2,3 @@
 @import "./scss/core/variables";
 @import "./scss/core/mixins";
 @import "./scss/core/typography";
-
-
-
-nav {
-    background: #333;
-    line-height: 43px;
-    color: white;
-    margin-bottom: 15px;
-
-    a {
-        display: inline-block;
-    }
-}
-
-* {
-    text-align: center;
-}
