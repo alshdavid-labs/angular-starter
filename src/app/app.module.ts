@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutes } from './app.routes';
 
 // ngrx
-import { State } from './app.state'
+import { state } from './app.state'
 import { StoreModule, MetaReducer } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -25,7 +25,7 @@ import { HomeView } from './views/home/home.view';
   imports: [
     BrowserModule,
     AppRoutes,
-    StoreModule.forRoot(State, { metaReducers }),
+    StoreModule.forRoot(state, { metaReducers }),
     StoreDevtoolsModule.instrument()    
   ],
   providers: [],

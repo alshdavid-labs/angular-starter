@@ -1,1 +1,5 @@
-export * from './config.action'
+import * as config from "./config.action"
+
+export {
+    config
+}

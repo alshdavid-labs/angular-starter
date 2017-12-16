@@ -5,6 +5,9 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --host 0.0.0.0 --disable-host-check",
+    "watch": "ng serve --host 0.0.0.0 --disable-host-check",
+    "watch:aot": "ng serve --host 0.0.0.0 --disable-host-check --aot",
+    "watch:prod": "ng serve --host 0.0.0.0 --disable-host-check --aot --prod",
     "build": "ng build --prod --aot",
     "test": "ng test",
     "lint": "ng lint",

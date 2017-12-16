@@ -1,1 +1,5 @@
-export * from './config.reducer'
+import * as config from "./config.reducer"
+
+export {
+    config
+}
