@@ -1,7 +1,10 @@
 import { ActionReducerMap } from '@ngrx/store'
-import { storeStash } from "./store"
-import { State } from "./models"
+import { routerReducer } from '@ngrx/router-store'
+import { actions, reducers, selectors } from "@store"
+import { State } from "@models"
 
 export const state: ActionReducerMap<State> = {
-    config: storeStash.reducers.config.configReducer,
+    routerReducer,
+    config: reducers.config.configReducer,
+    items: reducers.items.itemsReducer
 }

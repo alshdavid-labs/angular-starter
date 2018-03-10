@@ -1,16 +1,16 @@
 import { createSelector, createFeatureSelector } from "@ngrx/store"
-import * as fromModels from "../../models"
+import { Config } from "@models"
 
-export const getConfig = createFeatureSelector('config')
+export const config = createFeatureSelector('config')
 
-export const getUrl = createSelector(getConfig, 
-    (state:fromModels.Config) => state.url)
+export const getUrl = createSelector(config,
+    (state: Config) => state.url)
 
-export const getApi = createSelector(getConfig, 
-    (state:fromModels.Config) => state.api)
+export const getApi = createSelector(config,
+    (state: Config) => state.api)
 
-export const getLoggedIn = createSelector(getConfig, 
-    (state:fromModels.Config) => state.logged_in)
+export const getLoggedIn = createSelector(config,
+    (state: Config) => state.logged_in)
 
-export const getAuthorization = createSelector(getConfig, 
-    (state:fromModels.Config) => state.authorization)
+export const getAuthorization = createSelector(config,
+    (state: Config) => state.authorization)

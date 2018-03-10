@@ -1,19 +1,17 @@
-import * as ConfigActions from "../actions/config.action"
-import { Config } from "../../models"
+import { config } from "@store/actions"
+import { Config, Action } from "@models"
 
 
-export function configReducer(
-    state = new Config(),
-    action: ConfigActions.ConfigActions
-){
-    switch (action.type) {
-        case ConfigActions.UPDATE_CONFIG: {
-            return {
-                ...state,
-                ...action.payload
-            }
-        }
+export const actions = {}
+export const configReducer = (state: Config = new Config(), action = new Action()) =>
+    actions[action.type]
+        ? actions[action.type](state, action.payload)
+        : state
+
+// UPDATE_CONFIG Reducer
+actions[config.UPDATE_CONFIG] = (state, payload: Config) => {
+    return {
+        ...state,
+        ...payload
     }
-
-    return state
 }

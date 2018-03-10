@@ -1,84 +1,79 @@
 import { Injectable } from '@angular/core';
-import { Store } from '@ngrx/store'
-import { State } from '../models'
+import { constants } from '@app/app.constants'
 
 @Injectable()
 export class HttpService {
 
-    private state:State
-
-    constructor(
-        public store: Store<State>
-    ){
-        store.subscribe(state => this.state = state)
+    get({ endpoint = '', headers = {}, url = constants.http.defaultApi } = {}): Promise<any> {
+        return this.fetchCreator(url + endpoint, {
+            method: 'GET',
+            headers: { ...headers }
+        });
     }
 
-    get(endpoint, headers?):Promise<any>{
-        headers = this.setupHeaders(headers)
-        return this.xhr(this.state.config.api + endpoint, {
-            method: "GET",
-            headers: headers
-        })
-    }
-
-    post(endpoint, body?, headers?):Promise<any>{
-        headers = this.setupHeaders(headers)
-
-        return this.xhr(this.state.config.api + endpoint, {
-            method: "POST",
+    post({ endpoint = '', body = {}, headers = {}, url = constants.http.defaultApi } = {}): Promise<any> {
+        return this.fetchCreator(url + endpoint, {
+            method: 'POST',
             body: body,
-            headers: headers
-        })
+            headers: { ...headers }
+        });
     }
 
-    put(endpoint, body?, headers?):Promise<any>{
-        headers = this.setupHeaders(headers)
-        return this.xhr(this.state.config.api + endpoint, {
-            method: "PUT",
+    put({ endpoint = '', body = {}, headers = {}, url = constants.http.defaultApi } = {}): Promise<any> {
+        return this.fetchCreator(url + endpoint, {
+            method: 'PUT',
             body: body,
-            headers:headers
-        })
+            headers: { ...headers }
+        });
     }
 
-    patch(endpoint, body?, headers?):Promise<any>{
-        headers = this.setupHeaders(headers)
-        return this.xhr(this.state.config.api + endpoint, {
-            method: "PATCH",
+    patch({ endpoint = '', body = {}, headers = {}, url = constants.http.defaultApi } = {}): Promise<any> {
+        return this.fetchCreator(url + endpoint, {
+            method: 'PATCH',
             body: body,
-            headers: headers
-        })
+            headers: { ...headers }
+        });
     }
 
-    delete(endpoint, headers?):Promise<any>{
-        headers = this.setupHeaders(headers)
-        return this.xhr(this.state.config.api + endpoint, {
-            method: "DELETE",
-            headers: headers
-        })
+    delete({ endpoint = '', headers = {}, url = constants.http.defaultApi } = {}): Promise<any> {
+        return this.fetchCreator(url + endpoint, {
+            method: 'DELETE',
+            headers: { ...headers }
+        });
     }
 
-    setupHeaders = (headers?) => ({ ...headers, ...{ authorization: this.state.config.authorization } })
+    async fetchCreator(url, options) {
+        if (options.body) {
+            options.headers['content-type'] = 'application/json';
+            options.body = JSON.stringify(options.body);
+        }
 
-    async xhr(url, options) {
-        if (options.body) options.body = JSON.stringify(options.body)
-        options.headers["content-type"] = "application/json"
-    
-        let request = await fetch(url, options)
+        //options.credentials = 'same-origin';
+
+        let request = await fetch(url, options);
+
         let __meta__ = {
             status: request.status,
-            message: request.headers.get("message"),
+            message: request.statusText,
             url: url
-        }
+        };
+
         let response = {
             __meta__,
-            body: await request.json()
+            body: undefined
+        };
+
+        if (request.headers.get('content-type').includes('application/json')) {
+            response.body = await request.json();
+        } else {
+            response.body = await request.text();
         }
-    
+
         if (__meta__.status <= 199 || __meta__.status >= 300) {
-            throw response
+            throw response;
         }
-    
-        return response
+
+        return response;
     }
 
 }

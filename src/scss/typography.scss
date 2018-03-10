@@ -20,7 +20,7 @@
     margin: 0 auto;
     position: relative;
 
-    @media(max-width: $desktop){
+    @media(max-width: $screen-size-desktop){
         padding: 0 3%; 
     }
 
@@ -45,13 +45,13 @@
 } 
 
 .left {
-    @media(min-width: $desktop) {
+    @media(min-width: $screen-size-desktop) {
         float: left;
     }
 }
 
 .right {
-    @media(min-width: $desktop) {
+    @media(min-width: $screen-size-desktop) {
         float: right;
     }
 }
@@ -65,15 +65,15 @@
 
 
 // To show and hide elements for desktop / mobile
-.desktop { @media (max-width: $desktop){ display: none !important; } }
-.mobile  { @media (min-width: $desktop){ display: none !important; } }
+.desktop { @media (max-width: $screen-size-desktop){ display: none !important; } }
+.mobile  { @media (min-width: $screen-size-desktop){ display: none !important; } }
 
 
-.tablet-and-down  { @media screen and (min-width: $tablet) { display: none !important; } }
-.mobile-and-down  { @media screen and (min-width: $mobile) { display: none !important; } }
+.tablet-and-down  { @media screen and (min-width: $screen-size-tablet) { display: none !important; } }
+.mobile-and-down  { @media screen and (min-width: $screen-size-mobile) { display: none !important; } }
 
-.desktop-and-up   { @media screen and (max-width: $desktop){ display: none !important; } }
-.tablet-and-up    { @media screen and (max-width: $tablet) { display: none !important; } }
+.desktop-and-up   { @media screen and (max-width: $screen-size-desktop){ display: none !important; } }
+.tablet-and-up    { @media screen and (max-width: $screen-size-tablet) { display: none !important; } }
 
 
 

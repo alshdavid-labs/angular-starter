@@ -1,2 +1,13 @@
 <a routerLink="/home">Home</a>
 <a routerLink="/about">About</a>
+
+<h1>Home Page</h1>
+
+<div>
+    <button (click)="itemsService.start()">Start</button>
+    <button (click)="itemsService.stop()">Stop</button>
+</div>
+
+<ul>
+    <li *ngFor="let item of items">{{ item.text }}</li>
+</ul>
