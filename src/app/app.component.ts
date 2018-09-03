@@ -1,18 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { ItemsService } from '@services'
+import { Component } from '@angular/core';
 
 @Component({
-    selector: 'app-root',
-    template: `
-    <router-outlet></router-outlet>
+  selector: 'app-root',
+  template: `
+      <router-outlet></router-outlet>
   `
 })
 export class AppComponent {
-    constructor(
-        private itemsService: ItemsService
-    ) { }
-
-    ngOnInit() { 
-        this.itemsService.start()
-    }
+  title = 'app';
 }

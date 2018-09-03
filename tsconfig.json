@@ -1,13 +1,14 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
+    "module": "es2015",
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "baseUrl": "./src",
     "target": "es5",
     "typeRoots": [
       "node_modules/@types"
@@ -15,36 +16,6 @@
     "lib": [
       "es2017",
       "dom"
-    ],
-    "paths": {
-      "@app/*": ["app/*"],
-      
-      "@views": ["app/views/index"],
-      "@views/*": ["app/views/*"],
-      
-      "@models": ["app/models/index"],
-      "@models/*": ["app/models/*"],
-      
-      "@components": ["app/components/index"],
-      "@components/*": ["app/components/*"],
-      
-      "@services": ["app/services/index"],
-      "@services/*": ["app/services/*"],
-      
-      "@pipes": ["app/pipes/index"],
-      "@pipes/*": ["app/pipes/*"],
-
-      "@store": ["app/store/index"],
-      "@store/*": ["app/store/*"],
-
-      "@actions": ["app/store/actions/index"],
-      "@actions/*": ["app/store/actions/*"],
-
-      "@reducers": ["app/store/reducers/index"],
-      "@reducers/*": ["app/store/reducers/*"],
-
-      "@selectors": ["app/store/selectors/index"],
-      "@selectors/*": ["app/store/selectors/*"]
-    }
+    ]
   }
 }

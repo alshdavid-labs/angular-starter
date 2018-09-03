@@ -1,5 +1,5 @@
 export const constants = {
     http: {
-        defaultApi: ''
+        defaultApi: '/',
     }
-}
+};
